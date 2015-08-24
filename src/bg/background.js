@@ -1,12 +1,16 @@
-// if you checked "fancy-settings" in extensionizr.com, uncomment this lines
-
-// var settings = new Store("settings", {
-//     "sample_setting": "This is how you use Store.js to remember values"
-// });
-
+var data = {};
 
 //example of using a message handler from the inject scripts
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	chrome.pageAction.show(sender.tab.id);
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+	console.log('background.js');
+	data.request = request;
+	data.sender = sender;
+	data.sendResponse = sendResponse;
+	console.log(request);
+	console.log(sender);
+	console.log(sendResponse);
+	console.log('--------------------');
+	console.log(chrome.browserAction);
+	//chrome.pageAction.show(sender.tab.id);
 	sendResponse();
 });
