@@ -1,14 +1,30 @@
-chrome.extension.sendMessage({}, function(response) {
-	console.log('done');
-	var readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
+/*chrome.extension.sendMessage({
+    title : document.title
+}, function(response) {
+    console.log('inject.js');
+    console.log('--------------------');
+    var readyStateCheckInterval = setInterval(function() {
+        if (document.readyState === "complete") {
+            clearInterval(readyStateCheckInterval);
 
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
-
-	}
-	}, 10);
+            // ----------------------------------------------------------
+            // This part of the script triggers when page is done loading
+            console.log("Hello. This message was sent from scripts/inject.js");
+            // ----------------------------------------------------------
+            var imgs = $('body').find('.s_mod img');
+            imgs.each(function (i, img) {
+                console.log(img.src);
+            });
+        }
+    }, 10);
 });
+*/
+
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {  
+    console.log(request);
+});
+
+
+
+
+
